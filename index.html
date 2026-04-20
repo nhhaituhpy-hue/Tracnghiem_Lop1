@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -14,56 +13,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap');
 
 :root {
-
-  --bg:#f4e7c5;
-
-  --bg-pure:#fffaf0;
-
-  --surface:#fffaf0;
-
-  --surface-2:#f0e2b6;
-
-  --border:#e5d3a3;
-
-  --border-hi:#d6c28c;
-
-  --accent:#4f46e5;
-
-  --accent-lt:#ede9fe;
-
-  --accent-2:#0ea5e9;
-
-  --accent-grd: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
-
-  --green:#16a34a;
-
-  --green-lt:#dcfce7;
-
-  --red:#dc2626;
-
-  --red-lt:#fee2e2;
-
-  --yellow:#f59e0b;
-
-  --yellow-lt:#fef3c7;
-
-  --text:#1f2937;
-
-  --text-2:#6b7280;
-
-  --text-3:#9ca3af;
-
+  --bg: #0A1628;
+  --surface: #0F2040;
+  --surface2: #162845;
+  --border: #1E3A5F;
+  --navy: #1E3A5F;
+  --blue: #2E86AB;
+  --teal: #00B4D8;
+  --text: #E8F4FD;
+  --muted: #7FB3D3;
+  --green: #2ECC71;
+  --red: #E74C3C;
+  --yellow: #F39C12;
+  --orange: #E67E22;
+  --purple: #9B59B6;
+  --radius: 16px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-- { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body {
-font-family: ‘Be Vietnam Pro’, sans-serif;
-background: var(–bg);
-color: var(–text);
-min-height: 100vh;
-min-height: 100dvh;
-overflow-x: hidden;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
 }
 
 .screen { display: none; min-height: 100dvh; flex-direction: column; }
@@ -71,115 +48,115 @@ overflow-x: hidden;
 
 /* ===== HOME ===== */
 #homeScreen {
-background: radial-gradient(ellipse at top, #0F2A50 0%, var(–bg) 60%);
-padding: calc(var(–safe-top) + 40px) 24px calc(var(–safe-bottom) + 40px);
-align-items: center;
-overflow-y: auto;
+  background: radial-gradient(ellipse at top, #0F2A50 0%, var(--bg) 60%);
+  padding: calc(var(--safe-top) + 40px) 24px calc(var(--safe-bottom) + 40px);
+  align-items: center;
+  overflow-y: auto;
 }
 
 .home-logo {
-width: 80px; height: 80px;
-background: linear-gradient(135deg, var(–blue), var(–teal));
-border-radius: 22px;
-display: flex; align-items: center; justify-content: center;
-font-size: 2.4rem;
-margin-bottom: 24px;
-box-shadow: 0 0 40px rgba(0,180,216,0.3);
-animation: pulse 3s ease-in-out infinite;
-flex-shrink: 0;
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.4rem;
+  margin-bottom: 24px;
+  box-shadow: 0 0 40px rgba(0,180,216,0.3);
+  animation: pulse 3s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
-0%, 100% { box-shadow: 0 0 40px rgba(0,180,216,0.3); }
-50% { box-shadow: 0 0 60px rgba(0,180,216,0.5); }
+  0%, 100% { box-shadow: 0 0 40px rgba(0,180,216,0.3); }
+  50% { box-shadow: 0 0 60px rgba(0,180,216,0.5); }
 }
 
 .home-title { font-size: 2rem; font-weight: 800; text-align: center; line-height: 1.2; margin-bottom: 8px; }
-.home-title span { color: var(–teal); }
-.home-subtitle { color: var(–muted); text-align: center; font-size: 0.9rem; margin-bottom: 32px; }
+.home-title span { color: var(--teal); }
+.home-subtitle { color: var(--muted); text-align: center; font-size: 0.9rem; margin-bottom: 32px; }
 
 .stats-row {
-display: grid; grid-template-columns: repeat(3, 1fr);
-gap: 12px; width: 100%; max-width: 400px; margin-bottom: 28px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; width: 100%; max-width: 400px; margin-bottom: 28px;
 }
 
-.stat-box { background: var(–surface); border: 1px solid var(–border); border-radius: 14px; padding: 16px 8px; text-align: center; }
-.stat-num { font-size: 1.8rem; font-weight: 800; color: var(–teal); font-family: ‘IBM Plex Mono’, monospace; line-height: 1; }
-.stat-label { font-size: 0.7rem; color: var(–muted); margin-top: 4px; }
+.stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 8px; text-align: center; }
+.stat-num { font-size: 1.8rem; font-weight: 800; color: var(--teal); font-family: 'IBM Plex Mono', monospace; line-height: 1; }
+.stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
 
 .section-label {
-width: 100%; max-width: 400px;
-font-size: 0.72rem; font-weight: 600; color: var(–muted);
-text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;
-font-family: ‘IBM Plex Mono’, monospace;
+  width: 100%; max-width: 400px;
+  font-size: 0.72rem; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .topic-chips { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; max-width: 400px; margin-bottom: 24px; }
 
 .topic-chip {
-background: var(–surface); border: 1px solid var(–border);
-border-radius: 20px; padding: 7px 14px; font-size: 0.82rem;
-cursor: pointer; transition: all 0.2s; color: var(–muted);
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 7px 14px; font-size: 0.82rem;
+  cursor: pointer; transition: all 0.2s; color: var(--muted);
 }
-.topic-chip.selected, .topic-chip:hover { background: var(–blue); border-color: var(–teal); color: white; }
-.topic-chip.all { border-color: var(–teal); color: var(–teal); }
-.topic-chip.all.selected { background: var(–teal); color: var(–bg); }
+.topic-chip.selected, .topic-chip:hover { background: var(--blue); border-color: var(--teal); color: white; }
+.topic-chip.all { border-color: var(--teal); color: var(--teal); }
+.topic-chip.all.selected { background: var(--teal); color: var(--bg); }
 
 /* Settings grid — 2x2 */
 .settings-grid {
-width: 100%; max-width: 400px;
-display: grid; grid-template-columns: 1fr 1fr;
-gap: 12px; margin-bottom: 24px;
+  width: 100%; max-width: 400px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 24px;
 }
 
 .setting-item {
-background: var(–surface); border: 1px solid var(–border);
-border-radius: 14px; padding: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 14px;
 }
 
 .setting-label {
-font-size: 0.68rem; color: var(–muted); margin-bottom: 10px;
-font-family: ‘IBM Plex Mono’, monospace; text-transform: uppercase; letter-spacing: 1px;
+  font-size: 0.68rem; color: var(--muted); margin-bottom: 10px;
+  font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 1px;
 }
 
 .qty-control { display: flex; align-items: center; gap: 8px; }
 
 .qty-btn {
-width: 30px; height: 30px; background: var(–navy);
-border: 1px solid var(–border); border-radius: 8px;
-color: var(–teal); font-size: 1.1rem; cursor: pointer;
-display: flex; align-items: center; justify-content: center;
-transition: all 0.2s; flex-shrink: 0;
+  width: 30px; height: 30px; background: var(--navy);
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--teal); font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; flex-shrink: 0;
 }
-.qty-btn:active { background: var(–blue); }
+.qty-btn:active { background: var(--blue); }
 
 .qty-num {
-font-size: 1.35rem; font-weight: 700; color: var(–text);
-font-family: ‘IBM Plex Mono’, monospace; flex: 1; text-align: center;
+  font-size: 1.35rem; font-weight: 700; color: var(--text);
+  font-family: 'IBM Plex Mono', monospace; flex: 1; text-align: center;
 }
 
-.qty-sub { font-size: 0.68rem; color: var(–muted); text-align: center; margin-top: 4px; }
+.qty-sub { font-size: 0.68rem; color: var(--muted); text-align: center; margin-top: 4px; }
 
 .toggle-wrap { display: flex; align-items: center; justify-content: space-between; }
 .toggle {
-width: 44px; height: 26px; background: var(–navy);
-border-radius: 13px; cursor: pointer; position: relative;
-transition: background 0.3s; border: 1px solid var(–border);
+  width: 44px; height: 26px; background: var(--navy);
+  border-radius: 13px; cursor: pointer; position: relative;
+  transition: background 0.3s; border: 1px solid var(--border);
 }
-.toggle.on { background: var(–blue); }
+.toggle.on { background: var(--blue); }
 .toggle::after {
-content: ‘’; position: absolute; width: 20px; height: 20px;
-background: white; border-radius: 50%; top: 2px; left: 2px;
-transition: left 0.3s; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  content: ''; position: absolute; width: 20px; height: 20px;
+  background: white; border-radius: 50%; top: 2px; left: 2px;
+  transition: left 0.3s; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 .toggle.on::after { left: 20px; }
-.toggle-text { font-size: 0.85rem; color: var(–text); }
+.toggle-text { font-size: 0.85rem; color: var(--text); }
 
 /* Score presets */
 .score-presets {
-width: 100%; max-width: 400px;
-background: var(–surface); border: 1px solid var(–border);
-border-radius: 14px; padding: 14px; margin-bottom: 24px;
+  width: 100%; max-width: 400px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 14px; margin-bottom: 24px;
 }
 
 .score-presets .setting-label { margin-bottom: 12px; }
@@ -187,177 +164,177 @@ border-radius: 14px; padding: 14px; margin-bottom: 24px;
 .preset-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
 
 .preset-chip {
-background: var(–navy); border: 1px solid var(–border);
-border-radius: 8px; padding: 6px 12px; font-size: 0.8rem;
-cursor: pointer; color: var(–muted); transition: all 0.2s;
-font-family: ‘IBM Plex Mono’, monospace;
+  background: var(--navy); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 12px; font-size: 0.8rem;
+  cursor: pointer; color: var(--muted); transition: all 0.2s;
+  font-family: 'IBM Plex Mono', monospace;
 }
-.preset-chip.active { background: var(–blue); border-color: var(–teal); color: white; }
+.preset-chip.active { background: var(--blue); border-color: var(--teal); color: white; }
 
 .custom-score-row {
-display: flex; align-items: center; gap: 10px;
-background: var(–bg); border-radius: 10px; padding: 10px 12px;
-border: 1px solid var(–border);
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg); border-radius: 10px; padding: 10px 12px;
+  border: 1px solid var(--border);
 }
-.custom-score-row label { font-size: 0.8rem; color: var(–muted); flex: 1; }
+.custom-score-row label { font-size: 0.8rem; color: var(--muted); flex: 1; }
 .custom-score-row input {
-width: 70px; background: var(–navy); border: 1px solid var(–border);
-border-radius: 8px; color: var(–text); font-family: ‘IBM Plex Mono’, monospace;
-font-size: 1rem; font-weight: 700; padding: 6px 10px; text-align: center;
+  width: 70px; background: var(--navy); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem; font-weight: 700; padding: 6px 10px; text-align: center;
 }
-.custom-score-row input:focus { outline: none; border-color: var(–teal); }
+.custom-score-row input:focus { outline: none; border-color: var(--teal); }
 
 .score-preview {
-margin-top: 10px; font-size: 0.82rem; color: var(–teal);
-font-family: ‘IBM Plex Mono’, monospace; text-align: center;
-background: rgba(0,180,216,0.08); border-radius: 8px; padding: 8px;
+  margin-top: 10px; font-size: 0.82rem; color: var(--teal);
+  font-family: 'IBM Plex Mono', monospace; text-align: center;
+  background: rgba(0,180,216,0.08); border-radius: 8px; padding: 8px;
 }
 
 .no-data {
-width: 100%; max-width: 400px;
-background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3);
-border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 20px;
+  width: 100%; max-width: 400px;
+  background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.3);
+  border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 20px;
 }
 .no-data .icon { font-size: 2.5rem; margin-bottom: 12px; }
-.no-data p { color: var(–red); font-size: 0.88rem; line-height: 1.6; }
-.no-data code { background: rgba(231,76,60,0.2); padding: 2px 6px; border-radius: 4px; font-family: ‘IBM Plex Mono’, monospace; }
+.no-data p { color: var(--red); font-size: 0.88rem; line-height: 1.6; }
+.no-data code { background: rgba(231,76,60,0.2); padding: 2px 6px; border-radius: 4px; font-family: 'IBM Plex Mono', monospace; }
 .file-load-actions { margin-top: 16px; display: none; flex-direction: column; gap: 10px; align-items: center; }
 .file-load-input { display: none; }
 .file-load-btn {
-display: inline-flex; align-items: center; justify-content: center;
-min-height: 44px; padding: 0 16px;
-background: rgba(231,76,60,0.16); border: 1px solid rgba(231,76,60,0.35);
-border-radius: 12px; color: #fff; cursor: pointer; font-weight: 600;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; padding: 0 16px;
+  background: rgba(231,76,60,0.16); border: 1px solid rgba(231,76,60,0.35);
+  border-radius: 12px; color: #fff; cursor: pointer; font-weight: 600;
 }
-.file-load-note { color: var(–muted) !important; font-size: 0.8rem !important; }
+.file-load-note { color: var(--muted) !important; font-size: 0.8rem !important; }
 
 .btn-start {
-width: 100%; max-width: 400px; padding: 18px;
-background: linear-gradient(135deg, var(–blue) 0%, var(–teal) 100%);
-border: none; border-radius: 16px; color: white;
-font-family: ‘Be Vietnam Pro’, sans-serif; font-size: 1.1rem; font-weight: 700;
-cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
-box-shadow: 0 4px 20px rgba(0,180,216,0.25);
+  width: 100%; max-width: 400px; padding: 18px;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
+  border: none; border-radius: 16px; color: white;
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 1.1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
+  box-shadow: 0 4px 20px rgba(0,180,216,0.25);
 }
 .btn-start:active { transform: scale(0.98); }
 .btn-start:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
 
 /* ===== QUIZ SCREEN ===== */
-#quizScreen { background: var(–bg); }
+#quizScreen { background: var(--bg); }
 
 .quiz-header {
-padding: calc(var(–safe-top) + 16px) 20px 16px;
-background: var(–surface); border-bottom: 1px solid var(–border);
-flex-shrink: 0;
+  padding: calc(var(--safe-top) + 16px) 20px 16px;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .quiz-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.quiz-topic { font-size: 0.72rem; color: var(–teal); font-family: ‘IBM Plex Mono’, monospace; text-transform: uppercase; letter-spacing: 1px; }
+.quiz-topic { font-size: 0.72rem; color: var(--teal); font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
 
 .btn-exit {
-background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.3);
-border-radius: 8px; color: var(–red); padding: 6px 12px;
-font-size: 0.8rem; cursor: pointer; font-family: ‘Be Vietnam Pro’, sans-serif;
+  background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.3);
+  border-radius: 8px; color: var(--red); padding: 6px 12px;
+  font-size: 0.8rem; cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 .progress-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.progress-text { font-size: 0.85rem; color: var(–muted); }
-.progress-text strong { color: var(–text); font-family: ‘IBM Plex Mono’, monospace; }
+.progress-text { font-size: 0.85rem; color: var(--muted); }
+.progress-text strong { color: var(--text); font-family: 'IBM Plex Mono', monospace; }
 
 /* Live score badge in header */
 .live-score-badge {
-display: flex; gap: 10px; align-items: center;
-font-family: ‘IBM Plex Mono’, monospace; font-size: 0.82rem;
+  display: flex; gap: 10px; align-items: center;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem;
 }
-.lsb-correct { color: var(–green); font-weight: 700; }
-.lsb-wrong { color: var(–red); font-weight: 700; }
-.lsb-points { color: var(–yellow); font-weight: 700; background: rgba(243,156,18,0.12); padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(243,156,18,0.25); }
+.lsb-correct { color: var(--green); font-weight: 700; }
+.lsb-wrong { color: var(--red); font-weight: 700; }
+.lsb-points { color: var(--yellow); font-weight: 700; background: rgba(243,156,18,0.12); padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(243,156,18,0.25); }
 
-.progress-bar { height: 6px; background: var(–navy); border-radius: 3px; overflow: hidden; }
-.progress-fill { height: 100%; background: linear-gradient(90deg, var(–blue), var(–teal)); border-radius: 3px; transition: width 0.4s ease; }
+.progress-bar { height: 6px; background: var(--navy); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--teal)); border-radius: 3px; transition: width 0.4s ease; }
 
-.quiz-body { flex: 1; overflow-y: auto; padding: 20px 20px calc(var(–safe-bottom) + 16px); }
+.quiz-body { flex: 1; overflow-y: auto; padding: 20px 20px calc(var(--safe-bottom) + 16px); }
 
 .question-card {
-background: var(–surface); border: 1px solid var(–border);
-border-radius: var(–radius); padding: 20px; margin-bottom: 16px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px; margin-bottom: 16px;
 }
 
 .question-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.question-num { font-size: 0.7rem; color: var(–teal); font-family: ‘IBM Plex Mono’, monospace; text-transform: uppercase; letter-spacing: 1px; }
+.question-num { font-size: 0.7rem; color: var(--teal); font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
 .question-pts {
-font-size: 0.72rem; font-family: ‘IBM Plex Mono’, monospace;
-color: var(–yellow); background: rgba(243,156,18,0.1);
-border: 1px solid rgba(243,156,18,0.25); padding: 2px 8px; border-radius: 6px;
+  font-size: 0.72rem; font-family: 'IBM Plex Mono', monospace;
+  color: var(--yellow); background: rgba(243,156,18,0.1);
+  border: 1px solid rgba(243,156,18,0.25); padding: 2px 8px; border-radius: 6px;
 }
-.question-text { font-size: 1.05rem; font-weight: 600; line-height: 1.55; color: var(–text); }
+.question-text { font-size: 1.05rem; font-weight: 600; line-height: 1.55; color: var(--text); }
 
 .answers-list { display: flex; flex-direction: column; gap: 10px; }
 
 .answer-btn {
-width: 100%; background: var(–surface); border: 1.5px solid var(–border);
-border-radius: 12px; padding: 13px 14px;
-display: flex; align-items: flex-start; gap: 12px;
-cursor: pointer; transition: all 0.2s; text-align: left;
-color: var(–text); font-family: ‘Be Vietnam Pro’, sans-serif; font-size: 0.95rem;
+  width: 100%; background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 13px 14px;
+  display: flex; align-items: flex-start; gap: 12px;
+  cursor: pointer; transition: all 0.2s; text-align: left;
+  color: var(--text); font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.95rem;
 }
 .answer-btn:active { transform: scale(0.99); }
-.answer-btn.selected { border-color: var(–blue); background: rgba(46,134,171,0.15); }
-.answer-btn.correct { border-color: var(–green); background: rgba(46,204,113,0.15); pointer-events: none; }
-.answer-btn.wrong { border-color: var(–red); background: rgba(231,76,60,0.15); pointer-events: none; }
+.answer-btn.selected { border-color: var(--blue); background: rgba(46,134,171,0.15); }
+.answer-btn.correct { border-color: var(--green); background: rgba(46,204,113,0.15); pointer-events: none; }
+.answer-btn.wrong { border-color: var(--red); background: rgba(231,76,60,0.15); pointer-events: none; }
 .answer-btn.disabled-neutral { pointer-events: none; opacity: 0.5; }
 
 .ans-label {
-min-width: 28px; height: 28px; background: var(–navy);
-border-radius: 8px; display: flex; align-items: center; justify-content: center;
-font-size: 0.8rem; font-weight: 700; font-family: ‘IBM Plex Mono’, monospace;
-color: var(–muted); flex-shrink: 0;
+  min-width: 28px; height: 28px; background: var(--navy);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; font-family: 'IBM Plex Mono', monospace;
+  color: var(--muted); flex-shrink: 0;
 }
-.answer-btn.correct .ans-label { background: var(–green); color: white; }
-.answer-btn.wrong .ans-label { background: var(–red); color: white; }
-.answer-btn.selected .ans-label { background: var(–blue); color: white; }
+.answer-btn.correct .ans-label { background: var(--green); color: white; }
+.answer-btn.wrong .ans-label { background: var(--red); color: white; }
+.answer-btn.selected .ans-label { background: var(--blue); color: white; }
 .ans-text { line-height: 1.45; padding-top: 3px; }
 
 /* Feedback toast after answering */
 .answer-feedback {
-display: none; border-radius: 12px; padding: 12px 16px;
-margin-top: 14px; font-size: 0.88rem; line-height: 1.5;
-animation: fadeSlide 0.3s ease;
+  display: none; border-radius: 12px; padding: 12px 16px;
+  margin-top: 14px; font-size: 0.88rem; line-height: 1.5;
+  animation: fadeSlide 0.3s ease;
 }
 @keyframes fadeSlide { from { opacity:0; transform: translateY(6px); } to { opacity:1; transform:none; } }
 .answer-feedback.show { display: block; }
 .answer-feedback.fb-correct {
-background: rgba(46,204,113,0.12); border: 1px solid rgba(46,204,113,0.3);
+  background: rgba(46,204,113,0.12); border: 1px solid rgba(46,204,113,0.3);
 }
 .answer-feedback.fb-wrong {
-background: rgba(231,76,60,0.10); border: 1px solid rgba(231,76,60,0.25);
+  background: rgba(231,76,60,0.10); border: 1px solid rgba(231,76,60,0.25);
 }
 .fb-header { font-weight: 700; margin-bottom: 6px; font-size: 0.92rem; }
-.fb-header.ok { color: var(–green); }
-.fb-header.no { color: var(–red); }
-.fb-pts { font-family: ‘IBM Plex Mono’, monospace; font-size: 0.82rem; color: var(–yellow); margin-bottom: 6px; }
-.fb-expl { color: var(–muted); font-size: 0.85rem; }
+.fb-header.ok { color: var(--green); }
+.fb-header.no { color: var(--red); }
+.fb-pts { font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; color: var(--yellow); margin-bottom: 6px; }
+.fb-expl { color: var(--muted); font-size: 0.85rem; }
 
 .quiz-footer {
-padding: 14px 20px calc(var(–safe-bottom) + 14px);
-background: var(–surface); border-top: 1px solid var(–border); flex-shrink: 0;
+  padding: 14px 20px calc(var(--safe-bottom) + 14px);
+  background: var(--surface); border-top: 1px solid var(--border); flex-shrink: 0;
 }
 
 .btn-next {
-width: 100%; padding: 16px;
-background: linear-gradient(135deg, var(–blue), var(–teal));
-border: none; border-radius: 14px; color: white;
-font-family: ‘Be Vietnam Pro’, sans-serif; font-size: 1rem; font-weight: 700;
-cursor: pointer; transition: all 0.2s; display: none;
+  width: 100%; padding: 16px;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  border: none; border-radius: 14px; color: white;
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 1rem; font-weight: 700;
+  cursor: pointer; transition: all 0.2s; display: none;
 }
 .btn-next.show { display: block; }
 .btn-next:active { transform: scale(0.98); }
 
 /* ===== RESULT SCREEN ===== */
 #resultScreen {
-padding: calc(var(–safe-top) + 32px) 24px calc(var(–safe-bottom) + 32px);
-align-items: center; overflow-y: auto;
-background: radial-gradient(ellipse at top, #0F2A50 0%, var(–bg) 60%);
+  padding: calc(var(--safe-top) + 32px) 24px calc(var(--safe-bottom) + 32px);
+  align-items: center; overflow-y: auto;
+  background: radial-gradient(ellipse at top, #0F2A50 0%, var(--bg) 60%);
 }
 
 .result-icon { font-size: 4rem; margin-bottom: 12px; animation: bounceIn 0.6s cubic-bezier(0.68,-0.55,0.265,1.55); }
@@ -367,180 +344,179 @@ background: radial-gradient(ellipse at top, #0F2A50 0%, var(–bg) 60%);
 
 /* Big score card */
 .score-card {
-width: 100%; max-width: 400px;
-background: var(–surface); border: 1px solid var(–border);
-border-radius: 20px; padding: 24px 20px; margin: 16px 0 24px;
-text-align: center;
+  width: 100%; max-width: 400px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 24px 20px; margin: 16px 0 24px;
+  text-align: center;
 }
 
 .score-main {
-display: flex; align-items: flex-end; justify-content: center; gap: 6px; margin-bottom: 4px;
+  display: flex; align-items: flex-end; justify-content: center; gap: 6px; margin-bottom: 4px;
 }
 .score-pts {
-font-size: 4rem; font-weight: 800; line-height: 1;
-font-family: ‘IBM Plex Mono’, monospace;
-background: linear-gradient(135deg, var(–yellow), var(–orange));
--webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  font-size: 4rem; font-weight: 800; line-height: 1;
+  font-family: 'IBM Plex Mono', monospace;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
-.score-max { font-size: 1.4rem; color: var(–muted); font-family: ‘IBM Plex Mono’, monospace; padding-bottom: 6px; }
+.score-max { font-size: 1.4rem; color: var(--muted); font-family: 'IBM Plex Mono', monospace; padding-bottom: 6px; }
 
 .score-pct {
-font-size: 1.4rem; font-weight: 700;
-font-family: ‘IBM Plex Mono’, monospace; color: var(–teal); margin-bottom: 14px;
+  font-size: 1.4rem; font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace; color: var(--teal); margin-bottom: 14px;
 }
 
-.score-bar-wrap { height: 10px; background: var(–navy); border-radius: 5px; overflow: hidden; margin-bottom: 14px; }
-.score-bar-fill { height: 100%; border-radius: 5px; transition: width 1s ease; background: linear-gradient(90deg, var(–blue), var(–teal)); }
+.score-bar-wrap { height: 10px; background: var(--navy); border-radius: 5px; overflow: hidden; margin-bottom: 14px; }
+.score-bar-fill { height: 100%; border-radius: 5px; transition: width 1s ease; background: linear-gradient(90deg, var(--blue), var(--teal)); }
 
 .result-grade {
-display: inline-block; font-size: 0.9rem; font-weight: 700;
-padding: 6px 20px; border-radius: 20px; margin-bottom: 0;
+  display: inline-block; font-size: 0.9rem; font-weight: 700;
+  padding: 6px 20px; border-radius: 20px; margin-bottom: 0;
 }
 
 /* Detail grid 2x2 */
 .result-details {
-width: 100%; max-width: 400px;
-display: grid; grid-template-columns: repeat(2, 1fr);
-gap: 10px; margin-bottom: 22px;
+  width: 100%; max-width: 400px;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 10px; margin-bottom: 22px;
 }
 
 .detail-box {
-background: var(–surface); border: 1px solid var(–border);
-border-radius: 14px; padding: 16px; text-align: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px; text-align: center;
 }
-.detail-num { font-size: 1.8rem; font-weight: 800; font-family: ‘IBM Plex Mono’, monospace; line-height: 1; }
-.detail-label { font-size: 0.72rem; color: var(–muted); margin-top: 4px; }
+.detail-num { font-size: 1.8rem; font-weight: 800; font-family: 'IBM Plex Mono', monospace; line-height: 1; }
+.detail-label { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
 
 /* Score breakdown by topic */
 .breakdown-section {
-width: 100%; max-width: 400px; margin-bottom: 22px;
+  width: 100%; max-width: 400px; margin-bottom: 22px;
 }
 
 .breakdown-section h3 {
-font-size: 0.72rem; color: var(–muted); text-transform: uppercase;
-letter-spacing: 1.5px; margin-bottom: 12px; font-family: ‘IBM Plex Mono’, monospace;
+  font-size: 0.72rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 1.5px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace;
 }
 
 .topic-score-row {
-background: var(–surface); border: 1px solid var(–border);
-border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
-display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 12px;
 }
 .tsr-name { flex: 1; font-size: 0.85rem; font-weight: 600; }
-.tsr-stats { font-size: 0.78rem; color: var(–muted); font-family: ‘IBM Plex Mono’, monospace; white-space: nowrap; }
-.tsr-bar-wrap { flex: 1; height: 6px; background: var(–navy); border-radius: 3px; overflow: hidden; }
+.tsr-stats { font-size: 0.78rem; color: var(--muted); font-family: 'IBM Plex Mono', monospace; white-space: nowrap; }
+.tsr-bar-wrap { flex: 1; height: 6px; background: var(--navy); border-radius: 3px; overflow: hidden; }
 .tsr-bar-fill { height: 100%; border-radius: 3px; }
 
 /* Review list */
 .review-section { width: 100%; max-width: 400px; margin-bottom: 24px; }
 .review-section h3 {
-font-size: 0.72rem; color: var(–muted); text-transform: uppercase;
-letter-spacing: 1.5px; margin-bottom: 12px; font-family: ‘IBM Plex Mono’, monospace;
+  font-size: 0.72rem; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 1.5px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace;
 }
 
 .review-item {
-background: var(–surface); border: 1px solid var(–border);
-border-radius: 12px; padding: 13px 14px; margin-bottom: 8px;
-border-left: 3px solid transparent;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 13px 14px; margin-bottom: 8px;
+  border-left: 3px solid transparent;
 }
-.review-item.ok { border-left-color: var(–green); }
-.review-item.fail { border-left-color: var(–red); }
+.review-item.ok { border-left-color: var(--green); }
+.review-item.fail { border-left-color: var(--red); }
 
 .review-item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px; }
-.review-q { font-size: 0.87rem; color: var(–text); line-height: 1.4; font-weight: 500; flex: 1; }
+.review-q { font-size: 0.87rem; color: var(--text); line-height: 1.4; font-weight: 500; flex: 1; }
 .review-pts-badge {
-font-size: 0.75rem; font-family: ‘IBM Plex Mono’, monospace;
-font-weight: 700; white-space: nowrap; padding: 2px 8px; border-radius: 6px;
-flex-shrink: 0;
+  font-size: 0.75rem; font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700; white-space: nowrap; padding: 2px 8px; border-radius: 6px;
+  flex-shrink: 0;
 }
-.review-pts-badge.got { background: rgba(46,204,113,0.15); color: var(–green); }
-.review-pts-badge.miss { background: rgba(231,76,60,0.15); color: var(–red); }
+.review-pts-badge.got { background: rgba(46,204,113,0.15); color: var(--green); }
+.review-pts-badge.miss { background: rgba(231,76,60,0.15); color: var(--red); }
 
 .review-answers { display: flex; gap: 8px; flex-wrap: wrap; font-size: 0.78rem; }
 .rev-ans { padding: 3px 8px; border-radius: 6px; }
-.rev-ans.user-correct { background: rgba(46,204,113,0.2); color: var(–green); }
-.rev-ans.user-wrong { background: rgba(231,76,60,0.2); color: var(–red); }
-.rev-ans.correct-ans { background: rgba(0,180,216,0.2); color: var(–teal); border: 1px solid rgba(0,180,216,0.3); }
+.rev-ans.user-correct { background: rgba(46,204,113,0.2); color: var(--green); }
+.rev-ans.user-wrong { background: rgba(231,76,60,0.2); color: var(--red); }
+.rev-ans.correct-ans { background: rgba(0,180,216,0.2); color: var(--teal); border: 1px solid rgba(0,180,216,0.3); }
 
 .result-btns { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px; }
 .btn-retry {
-padding: 16px;
-background: linear-gradient(135deg, var(–blue), var(–teal));
-border: none; border-radius: 14px; color: white;
-font-family: ‘Be Vietnam Pro’, sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  border: none; border-radius: 14px; color: white;
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer;
 }
 .btn-home {
-padding: 14px; background: transparent;
-border: 1.5px solid var(–border); border-radius: 14px; color: var(–muted);
-font-family: ‘Be Vietnam Pro’, sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  padding: 14px; background: transparent;
+  border: 1.5px solid var(--border); border-radius: 14px; color: var(--muted);
+  font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer;
 }
 
 /* Install prompt */
 .install-prompt {
-position: fixed; bottom: calc(var(–safe-bottom) + 20px);
-left: 20px; right: 20px; background: var(–surface2);
-border: 1px solid var(–border); border-radius: 16px;
-padding: 16px 20px; display: flex; align-items: center; gap: 14px;
-z-index: 999; box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-animation: slideUp 0.4s ease;
+  position: fixed; bottom: calc(var(--safe-bottom) + 20px);
+  left: 20px; right: 20px; background: var(--surface2);
+  border: 1px solid var(--border); border-radius: 16px;
+  padding: 16px 20px; display: flex; align-items: center; gap: 14px;
+  z-index: 999; box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  animation: slideUp 0.4s ease;
 }
 @keyframes slideUp { from { transform: translateY(100%); opacity:0; } to { transform:translateY(0); opacity:1; } }
 .install-icon { font-size: 2rem; flex-shrink: 0; }
 .install-text { flex: 1; }
 .install-text strong { font-size: 0.9rem; display: block; margin-bottom: 2px; }
-.install-text span { font-size: 0.78rem; color: var(–muted); }
-.install-close { color: var(–muted); font-size: 1.2rem; cursor: pointer; padding: 4px; }
+.install-text span { font-size: 0.78rem; color: var(--muted); }
+.install-close { color: var(--muted); font-size: 1.2rem; cursor: pointer; padding: 4px; }
 
 .loading-overlay {
-position: fixed; inset: 0; background: var(–bg);
-display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
+  position: fixed; inset: 0; background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
 }
 .spinner {
-width: 48px; height: 48px; border: 3px solid var(–border);
-border-top-color: var(–teal); border-radius: 50%;
-animation: spin 0.8s linear infinite; margin-bottom: 16px;
+  width: 48px; height: 48px; border: 3px solid var(--border);
+  border-top-color: var(--teal); border-radius: 50%;
+  animation: spin 0.8s linear infinite; margin-bottom: 16px;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.loading-text { color: var(–muted); font-size: 0.88rem; }
+.loading-text { color: var(--muted); font-size: 0.88rem; }
 
 /* ===== UPDATE BANNER ===== */
 #updateBanner {
-display: none;
-position: fixed; top: calc(var(–safe-top) + 12px);
-left: 12px; right: 12px;
-background: linear-gradient(135deg, #1a3a5c, #0f2a48);
-border: 1px solid var(–teal);
-border-radius: 14px; padding: 14px 16px;
-z-index: 10000;
-box-shadow: 0 4px 24px rgba(0,180,216,0.25);
-animation: slideDown 0.35s cubic-bezier(0.34,1.56,0.64,1);
-display: none; align-items: center; gap: 12px;
+  display: none;
+  position: fixed; top: calc(var(--safe-top) + 12px);
+  left: 12px; right: 12px;
+  background: linear-gradient(135deg, #1a3a5c, #0f2a48);
+  border: 1px solid var(--teal);
+  border-radius: 14px; padding: 14px 16px;
+  z-index: 10000;
+  box-shadow: 0 4px 24px rgba(0,180,216,0.25);
+  animation: slideDown 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  display: none; align-items: center; gap: 12px;
 }
 #updateBanner.show { display: flex; }
 @keyframes slideDown {
-from { transform: translateY(-120%); opacity: 0; }
-to   { transform: translateY(0);    opacity: 1; }
+  from { transform: translateY(-120%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 .update-icon { font-size: 1.5rem; flex-shrink: 0; }
 .update-body { flex: 1; }
-.update-body strong { font-size: 0.9rem; display: block; margin-bottom: 2px; color: var(–text); }
-.update-body span   { font-size: 0.78rem; color: var(–muted); }
+.update-body strong { font-size: 0.9rem; display: block; margin-bottom: 2px; color: var(--text); }
+.update-body span   { font-size: 0.78rem; color: var(--muted); }
 .update-actions { display: flex; gap: 8px; flex-shrink: 0; }
 .btn-update-reload {
-background: var(–teal); border: none; border-radius: 10px;
-color: #0A1628; font-family: ‘Be Vietnam Pro’, sans-serif;
-font-size: 0.82rem; font-weight: 700; padding: 8px 14px; cursor: pointer;
-white-space: nowrap;
+  background: var(--teal); border: none; border-radius: 10px;
+  color: #0A1628; font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 0.82rem; font-weight: 700; padding: 8px 14px; cursor: pointer;
+  white-space: nowrap;
 }
 .btn-update-reload:active { opacity: 0.85; }
 .btn-update-dismiss {
-background: transparent; border: 1px solid var(–border);
-border-radius: 10px; color: var(–muted);
-font-family: ‘Be Vietnam Pro’, sans-serif;
-font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 10px; color: var(--muted);
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
 }
 </style>
-
 </head>
 <body>
 
@@ -550,7 +526,6 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
 </div>
 
 <!-- Update banner: hiện khi SW mới activate -->
-
 <div id="updateBanner">
   <div class="update-icon">🔄</div>
   <div class="update-body">
@@ -564,7 +539,6 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
 </div>
 
 <!-- ===================== HOME SCREEN ===================== -->
-
 <div class="screen" id="homeScreen">
   <div class="home-logo">🌟</div>
   <h1 class="home-title">Trắc Nghiệm<br><span>Lớp 1</span></h1>
@@ -589,7 +563,6 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
   <div class="topic-chips" id="topicChips"></div>
 
   <!-- Settings: số câu + ngẫu nhiên -->
-
   <div class="section-label">Cài đặt bài thi</div>
   <div class="settings-grid">
     <div class="setting-item">
@@ -611,7 +584,6 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
   </div>
 
   <!-- Score per question settings -->
-
   <div class="score-presets">
     <div class="setting-label">Điểm mỗi câu đúng</div>
     <div class="preset-row" id="presetRow">
@@ -633,8 +605,7 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
     Hãy dùng <strong>Excel_to_JSON_Converter.html</strong> để tạo file và đặt cùng thư mục với app.</p>
   </div>
 
-<button class="btn-start" onclick="startQuiz()">✏️ Bắt đầu làm bài</button>
-
+  <button class="btn-start" onclick="startQuiz()">✏️ Bắt đầu làm bài</button>
   <div class="file-load-actions">
     <label class="file-load-btn" for="questionFileInput">Chọn file questions.json</label>
     <input class="file-load-input" type="file" id="questionFileInput" accept=".json,application/json" onchange="handleQuestionFileSelect(event)">
@@ -643,7 +614,6 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
 </div>
 
 <!-- ===================== QUIZ SCREEN ===================== -->
-
 <div class="screen" id="quizScreen">
   <div class="quiz-header">
     <div class="quiz-header-top">
@@ -671,13 +641,11 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
 </div>
 
 <!-- ===================== RESULT SCREEN ===================== -->
-
 <div class="screen" id="resultScreen">
   <div class="result-icon" id="resultIcon">🏆</div>
   <div class="result-title" id="resultTitle">Hoàn thành!</div>
 
   <!-- Main score card -->
-
   <div class="score-card">
     <div class="score-main">
       <div class="score-pts" id="scorePts">0</div>
@@ -691,7 +659,6 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
   </div>
 
   <!-- 4 detail boxes -->
-
   <div class="result-details">
     <div class="detail-box">
       <div class="detail-num" id="detailCorrect" style="color:var(--green)">0</div>
@@ -712,14 +679,12 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
   </div>
 
   <!-- Score breakdown by topic -->
-
   <div class="breakdown-section">
     <h3>Điểm theo từng môn</h3>
     <div id="topicBreakdown"></div>
   </div>
 
   <!-- Review -->
-
   <div class="review-section">
     <h3>Xem lại từng câu</h3>
     <div id="reviewList"></div>
@@ -732,7 +697,6 @@ font-size: 0.82rem; padding: 8px 10px; cursor: pointer;
 </div>
 
 <!-- Install Prompt -->
-
 <div class="install-prompt" id="installPrompt" style="display:none">
   <div class="install-icon">📱</div>
   <div class="install-text">
@@ -1247,6 +1211,5 @@ function dismissUpdate() {
   if (banner) banner.classList.remove('show');
 }
 </script>
-
 </body>
 </html>
