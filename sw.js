@@ -3,7 +3,7 @@
 // Cách nhanh: copy giá trị Date.now() hiện tại vào đây
 // Hoặc dùng bất kỳ chuỗi version nào, ví dụ: '2026-04-20-v2'
 // ============================================================
-const BUILD_TIME = '2026-04-20-001';
+const BUILD_TIME = '2026-04-20-004';
 const CACHE_NAME = 'quiz-app-' + BUILD_TIME;
 
 const PRECACHE_ASSETS = [

@@ -81,6 +81,7 @@ body {
 }
 
 .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 8px; text-align: center; }
+.stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 8px; text-align: center; box-shadow: 0 4px 10px rgba(139, 94, 60, 0.05); }
 .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--teal); font-family: 'IBM Plex Mono', monospace; line-height: 1; }
 .stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
 
@@ -99,6 +100,7 @@ body {
   cursor: pointer; transition: all 0.2s; color: var(--muted);
 }
 .topic-chip.selected, .topic-chip:hover { background: var(--blue); border-color: var(--teal); color: white; }
+.topic-chip:hover { transform: scale(1.05); }
 .topic-chip.all { border-color: var(--teal); color: var(--teal); }
 .topic-chip.all.selected { background: var(--teal); color: var(--bg); }
 
@@ -112,6 +114,7 @@ body {
 .setting-item {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 14px; padding: 14px;
+  box-shadow: 0 4px 10px rgba(139, 94, 60, 0.05);
 }
 
 .setting-label {
@@ -128,7 +131,7 @@ body {
   display: flex; align-items: center; justify-content: center;
   transition: all 0.2s; flex-shrink: 0;
 }
-.qty-btn:active { background: var(--blue); }
+.qty-btn:hover { background: var(--blue); transform: scale(1.1); }
 
 .qty-num {
   font-size: 1.35rem; font-weight: 700; color: var(--text);
@@ -152,11 +155,25 @@ body {
 .toggle.on::after { left: 20px; }
 .toggle-text { font-size: 0.85rem; color: var(--text); }
 
+/* Custom range input */
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; background: var(--navy); height: 6px;
+  border-radius: 3px; outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; background: var(--blue);
+  border-radius: 50%; cursor: pointer; border: 2px solid var(--surface);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
 /* Score presets */
 .score-presets {
   width: 100%; max-width: 400px;
   background: var(--surface); border: 1px solid var(--border);
   border-radius: 14px; padding: 14px; margin-bottom: 24px;
+  box-shadow: 0 4px 10px rgba(139, 94, 60, 0.05);
 }
 
 .score-presets .setting-label { margin-bottom: 12px; }
@@ -170,6 +187,7 @@ body {
   font-family: 'IBM Plex Mono', monospace;
 }
 .preset-chip.active { background: var(--blue); border-color: var(--teal); color: white; }
+.preset-chip:hover { transform: scale(1.05); }
 
 .custom-score-row {
   display: flex; align-items: center; gap: 10px;
@@ -216,7 +234,7 @@ body {
   cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
   box-shadow: 0 4px 20px rgba(139,94,60,0.2);
 }
-.btn-start:active { transform: scale(0.98); }
+.btn-start:hover { transform: scale(1.02); }
 .btn-start:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
 
 /* ===== QUIZ SCREEN ===== */
@@ -236,6 +254,7 @@ body {
   border-radius: 8px; color: var(--red); padding: 6px 12px;
   font-size: 0.8rem; cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif;
 }
+.btn-exit:hover { transform: scale(1.05); }
 
 .progress-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .progress-text { font-size: 0.85rem; color: var(--muted); }
@@ -258,6 +277,7 @@ body {
 .question-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 20px; margin-bottom: 16px;
+  box-shadow: 0 6px 16px rgba(139, 94, 60, 0.08);
 }
 
 .question-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
@@ -274,11 +294,11 @@ body {
 .answer-btn {
   width: 100%; background: var(--surface); border: 1.5px solid var(--border);
   border-radius: 12px; padding: 13px 14px;
-  display: flex; align-items: flex-start; gap: 12px;
+  display: flex; align-items: flex-start; gap: 12px; box-shadow: 0 2px 6px rgba(139, 94, 60, 0.04);
   cursor: pointer; transition: all 0.2s; text-align: left;
   color: var(--text); font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.95rem;
 }
-.answer-btn:active { transform: scale(0.99); }
+.answer-btn:hover { transform: scale(1.02); }
 .answer-btn.selected { border-color: var(--blue); background: rgba(46,134,171,0.15); }
 .answer-btn.correct { border-color: var(--green); background: rgba(46,204,113,0.1); pointer-events: none; }
 .answer-btn.wrong { border-color: var(--red); background: rgba(231,76,60,0.1); pointer-events: none; }
@@ -324,11 +344,12 @@ body {
   width: 100%; padding: 16px; color: #3D2B1F;
   background: linear-gradient(135deg, var(--blue), var(--teal));
   border: none; border-radius: 14px; color: white;
+  box-shadow: 0 4px 15px rgba(139, 94, 60, 0.15);
   font-family: 'Be Vietnam Pro', sans-serif; font-size: 1rem; font-weight: 700;
   cursor: pointer; transition: all 0.2s; display: none;
 }
 .btn-next.show { display: block; }
-.btn-next:active { transform: scale(0.98); }
+.btn-next:hover { transform: scale(1.02); }
 
 /* ===== RESULT SCREEN ===== */
 #resultScreen {
@@ -443,14 +464,16 @@ body {
 .btn-retry {
   padding: 16px; color: #3D2B1F;
   background: linear-gradient(135deg, var(--blue), var(--teal));
-  border: none; border-radius: 14px;
+  border: none; border-radius: 14px; box-shadow: 0 4px 15px rgba(139, 94, 60, 0.15);
   font-family: 'Be Vietnam Pro', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer;
 }
+.btn-retry:hover { transform: scale(1.02); }
 .btn-home {
   padding: 14px; background: transparent;
   border: 1.5px solid var(--border); border-radius: 14px; color: var(--muted);
   font-family: 'Be Vietnam Pro', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer;
 }
+.btn-home:hover { transform: scale(1.02); }
 
 /* Install prompt */
 .install-prompt {
@@ -579,6 +602,20 @@ body {
       <div class="toggle-wrap" style="margin-top:6px">
         <span class="toggle-text">Ngẫu nhiên</span>
         <div class="toggle on" id="shuffleToggle" onclick="toggleShuffle()"></div>
+      </div>
+    </div>
+    <div class="setting-item">
+      <div class="setting-label">Âm thanh</div>
+      <div class="toggle-wrap" style="margin-top:6px">
+        <span class="toggle-text" id="soundStatusText">Bật</span>
+        <div class="toggle on" id="soundToggle" onclick="toggleSound()"></div>
+      </div>
+    </div>
+    <div class="setting-item">
+      <div class="setting-label">Âm lượng</div>
+      <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.3" oninput="onVolumeChange(this.value)">
+        <span id="volumeValue" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--muted); min-width: 28px;">30%</span>
       </div>
     </div>
   </div>
@@ -720,12 +757,32 @@ let qtyNum = 50;
 let shuffle = true;
 let pointsPerCorrect = 2;
 let isCustomScore = false;
+let soundEnabled = true;
+let volumeLevel = 0.3;
 let startTime = null;
+
+// Hiệu ứng âm thanh
+const sounds = {
+  // Đổi sang nguồn âm thanh phổ biến, hỗ trợ CORS tốt hơn
+  correct: new Audio('https://www.soundjay.com/buttons/sounds/button-3.mp3'),
+  wrong: new Audio('https://www.soundjay.com/buttons/sounds/button-10.mp3')
+};
+
+// Cấu hình mặc định để tải sẵn
+sounds.correct.preload = 'auto';
+sounds.wrong.preload = 'auto';
+// Tải trước âm thanh
+sounds.correct.load();
+sounds.wrong.load();
 
 // ===== INIT =====
 async function init() {
   await loadQuestions();
   loadBestScore();
+  soundEnabled = localStorage.getItem('quiz_sound_enabled') !== 'false';
+  updateSoundUI();
+  volumeLevel = parseFloat(localStorage.getItem('quiz_volume_level')) || 0.3;
+  applyVolume();
   showScreen('homeScreen');
   document.getElementById('loadingOverlay').style.display = 'none';
   checkInstallPrompt();
@@ -872,6 +929,34 @@ function toggleShuffle() {
   document.getElementById('shuffleToggle').className = 'toggle' + (shuffle ? ' on' : '');
 }
 
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  updateSoundUI();
+  localStorage.setItem('quiz_sound_enabled', soundEnabled);
+}
+
+function updateSoundUI() {
+  const btn = document.getElementById('soundToggle');
+  const text = document.getElementById('soundStatusText');
+  if (btn) btn.className = 'toggle' + (soundEnabled ? ' on' : '');
+  if (text) text.textContent = soundEnabled ? 'Bật' : 'Tắt';
+}
+
+function onVolumeChange(val) {
+  volumeLevel = parseFloat(val);
+  applyVolume();
+  localStorage.setItem('quiz_volume_level', volumeLevel);
+}
+
+function applyVolume() {
+  sounds.correct.volume = volumeLevel; // Âm lượng cho câu đúng
+  sounds.wrong.volume = volumeLevel; // Âm lượng cho câu sai (để dễ kiểm tra)
+  const slider = document.getElementById('volumeSlider');
+  const text = document.getElementById('volumeValue');
+  if (slider) slider.value = volumeLevel;
+  if (text) text.textContent = Math.round(volumeLevel * 100) + '%';
+}
+
 // ===== SCORE SETTINGS =====
 function selectPreset(el, val) {
   document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
@@ -903,6 +988,20 @@ function updateScorePreview() {
 
 // ===== QUIZ LOGIC =====
 function startQuiz() {
+  // Mở khóa âm thanh cho iOS/Safari (Unlock Audio)
+  if (soundEnabled) {
+    // Phát thử ở chế độ im lặng để "xin quyền" trình duyệt
+    const unlock = (audio) => {
+      const p = audio.play();
+      if (p !== undefined) {
+        p.then(() => { audio.pause(); audio.currentTime = 0; })
+         .catch(e => console.error("Audio unlock failed:", e));
+      }
+    };
+    unlock(sounds.correct);
+    unlock(sounds.wrong);
+  }
+
   let pool = getFilteredQuestions();
   if (pool.length === 0) { alert('Không có câu hỏi nào!'); return; }
   if (shuffle) pool = pool.sort(() => Math.random() - 0.5);
@@ -996,8 +1095,22 @@ function selectAnswer(label) {
   if (userAnswers[currentIndex] !== null) return;
   const q = currentQuestions[currentIndex];
   userAnswers[currentIndex] = label;
-  if (label === q.correct) { correct++; totalPoints += pointsPerCorrect; }
-  else wrong++;
+  
+  if (label === q.correct) { 
+    correct++; 
+    totalPoints += pointsPerCorrect;
+    if (soundEnabled) {
+      sounds.correct.currentTime = 0; // Reset để phát lại ngay
+      sounds.correct.play().catch(() => {}); // Chống lỗi nếu trình duyệt chặn
+    }
+  } else { 
+    wrong++; 
+    if (soundEnabled) {
+      sounds.wrong.currentTime = 0;
+      sounds.wrong.play().catch(() => {});
+    }
+  }
+
   renderQuestion();
 }
 
