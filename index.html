@@ -13,15 +13,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap');
 
 :root {
-  --bg: #0A1628;
-  --surface: #0F2040;
-  --surface2: #162845;
-  --border: #1E3A5F;
-  --navy: #1E3A5F;
-  --blue: #2E86AB;
-  --teal: #00B4D8;
-  --text: #E8F4FD;
-  --muted: #7FB3D3;
+  --bg: #F5EBD7; /* Desert Sand Background */
+  --surface: #FAF3E0;
+  --surface2: #EAD9B5;
+  --border: #D7C49E;
+  --navy: #8B5E3C;
+  --blue: #C3B091; /* Coffee Milk Button */
+  --teal: #A67B5B;
+  --text: #3D2B1F; /* Dark Brown Text */
+  --muted: #6D4C41;
   --green: #2ECC71;
   --red: #E74C3C;
   --yellow: #F39C12;
@@ -48,7 +48,7 @@ body {
 
 /* ===== HOME ===== */
 #homeScreen {
-  background: radial-gradient(ellipse at top, #0F2A50 0%, var(--bg) 60%);
+  background: radial-gradient(ellipse at top, #EAD9B5 0%, var(--bg) 60%);
   padding: calc(var(--safe-top) + 40px) 24px calc(var(--safe-bottom) + 40px);
   align-items: center;
   overflow-y: auto;
@@ -56,7 +56,7 @@ body {
 
 .home-logo {
   width: 80px; height: 80px;
-  background: linear-gradient(135deg, var(--blue), var(--teal));
+  background: linear-gradient(135deg, #A67B5B, #8B5E3C);
   border-radius: 22px;
   display: flex; align-items: center; justify-content: center;
   font-size: 2.4rem;
@@ -95,7 +95,7 @@ body {
 
 .topic-chip {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: 20px; padding: 7px 14px; font-size: 0.82rem;
+  border-radius: 20px; padding: 7px 14px; font-size: 0.82rem; font-weight: 500;
   cursor: pointer; transition: all 0.2s; color: var(--muted);
 }
 .topic-chip.selected, .topic-chip:hover { background: var(--blue); border-color: var(--teal); color: white; }
@@ -124,7 +124,7 @@ body {
 .qty-btn {
   width: 30px; height: 30px; background: var(--navy);
   border: 1px solid var(--border); border-radius: 8px;
-  color: var(--teal); font-size: 1.1rem; cursor: pointer;
+  color: var(--text); font-size: 1.1rem; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: all 0.2s; flex-shrink: 0;
 }
@@ -211,10 +211,10 @@ body {
 .btn-start {
   width: 100%; max-width: 400px; padding: 18px;
   background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
-  border: none; border-radius: 16px; color: white;
+  border: none; border-radius: 16px; color: #3D2B1F;
   font-family: 'Be Vietnam Pro', sans-serif; font-size: 1.1rem; font-weight: 700;
   cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
-  box-shadow: 0 4px 20px rgba(0,180,216,0.25);
+  box-shadow: 0 4px 20px rgba(139,94,60,0.2);
 }
 .btn-start:active { transform: scale(0.98); }
 .btn-start:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; }
@@ -229,10 +229,10 @@ body {
 }
 
 .quiz-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.quiz-topic { font-size: 0.72rem; color: var(--teal); font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
+.quiz-topic { font-size: 0.72rem; color: var(--navy); font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
 
 .btn-exit {
-  background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.3);
+  background: rgba(231,76,60,0.1); border: 1px solid rgba(231,76,60,0.2);
   border-radius: 8px; color: var(--red); padding: 6px 12px;
   font-size: 0.8rem; cursor: pointer; font-family: 'Be Vietnam Pro', sans-serif;
 }
@@ -280,8 +280,8 @@ body {
 }
 .answer-btn:active { transform: scale(0.99); }
 .answer-btn.selected { border-color: var(--blue); background: rgba(46,134,171,0.15); }
-.answer-btn.correct { border-color: var(--green); background: rgba(46,204,113,0.15); pointer-events: none; }
-.answer-btn.wrong { border-color: var(--red); background: rgba(231,76,60,0.15); pointer-events: none; }
+.answer-btn.correct { border-color: var(--green); background: rgba(46,204,113,0.1); pointer-events: none; }
+.answer-btn.wrong { border-color: var(--red); background: rgba(231,76,60,0.1); pointer-events: none; }
 .answer-btn.disabled-neutral { pointer-events: none; opacity: 0.5; }
 
 .ans-label {
@@ -321,7 +321,7 @@ body {
 }
 
 .btn-next {
-  width: 100%; padding: 16px;
+  width: 100%; padding: 16px; color: #3D2B1F;
   background: linear-gradient(135deg, var(--blue), var(--teal));
   border: none; border-radius: 14px; color: white;
   font-family: 'Be Vietnam Pro', sans-serif; font-size: 1rem; font-weight: 700;
@@ -334,7 +334,7 @@ body {
 #resultScreen {
   padding: calc(var(--safe-top) + 32px) 24px calc(var(--safe-bottom) + 32px);
   align-items: center; overflow-y: auto;
-  background: radial-gradient(ellipse at top, #0F2A50 0%, var(--bg) 60%);
+  background: radial-gradient(ellipse at top, #EAD9B5 0%, var(--bg) 60%);
 }
 
 .result-icon { font-size: 4rem; margin-bottom: 12px; animation: bounceIn 0.6s cubic-bezier(0.68,-0.55,0.265,1.55); }
@@ -356,14 +356,14 @@ body {
 .score-pts {
   font-size: 4rem; font-weight: 800; line-height: 1;
   font-family: 'IBM Plex Mono', monospace;
-  background: linear-gradient(135deg, var(--yellow), var(--orange));
+  background: linear-gradient(135deg, #8B5E3C, #4B3621);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .score-max { font-size: 1.4rem; color: var(--muted); font-family: 'IBM Plex Mono', monospace; padding-bottom: 6px; }
 
 .score-pct {
   font-size: 1.4rem; font-weight: 700;
-  font-family: 'IBM Plex Mono', monospace; color: var(--teal); margin-bottom: 14px;
+  font-family: 'IBM Plex Mono', monospace; color: var(--navy); margin-bottom: 14px;
 }
 
 .score-bar-wrap { height: 10px; background: var(--navy); border-radius: 5px; overflow: hidden; margin-bottom: 14px; }
@@ -441,9 +441,9 @@ body {
 
 .result-btns { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 12px; }
 .btn-retry {
-  padding: 16px;
+  padding: 16px; color: #3D2B1F;
   background: linear-gradient(135deg, var(--blue), var(--teal));
-  border: none; border-radius: 14px; color: white;
+  border: none; border-radius: 14px;
   font-family: 'Be Vietnam Pro', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer;
 }
 .btn-home {
@@ -1039,13 +1039,19 @@ function showResults() {
 
   const grade_el = document.getElementById('resultGrade');
   grade_el.textContent = grade;
-  grade_el.style.background = gradeColor.replace(')', ',0.15)').replace('var(', 'rgba(').replace('--green','46,204,113').replace('--teal','0,180,216').replace('--yellow','243,156,18').replace('--red','231,76,60');
+  const translucentColors = {
+    'var(--green)': 'rgba(46, 204, 113, 0.15)',
+    'var(--teal)': 'rgba(0, 180, 216, 0.15)',
+    'var(--yellow)': 'rgba(243, 156, 18, 0.15)',
+    'var(--red)': 'rgba(231, 76, 60, 0.15)'
+  };
+  grade_el.style.background = translucentColors[gradeColor] || 'transparent';
   grade_el.style.color = gradeColor;
 
   // Animate score bar after slight delay
   setTimeout(() => {
     document.getElementById('scoreBarFill').style.width = pct + '%';
-    const barColor = pct >= 75 ? 'linear-gradient(90deg,#2E86AB,#00B4D8)' : pct >= 50 ? 'linear-gradient(90deg,#E67E22,#F39C12)' : 'linear-gradient(90deg,#C0392B,#E74C3C)';
+    const barColor = pct >= 75 ? 'linear-gradient(90deg, #A67B5B, #8B5E3C)' : pct >= 50 ? 'linear-gradient(90deg,#E67E22,#F39C12)' : 'linear-gradient(90deg,#C0392B,#E74C3C)';
     document.getElementById('scoreBarFill').style.background = barColor;
   }, 300);
 
