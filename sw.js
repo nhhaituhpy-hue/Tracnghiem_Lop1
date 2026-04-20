@@ -3,7 +3,7 @@
 // Cách nhanh: copy giá trị Date.now() hiện tại vào đây
 // Hoặc dùng bất kỳ chuỗi version nào, ví dụ: '2026-04-20-v2'
 // ============================================================
-const BUILD_TIME = '2026-04-20-004';
+const BUILD_TIME = '2026-04-20-007';
 const CACHE_NAME = 'quiz-app-' + BUILD_TIME;
 
 const PRECACHE_ASSETS = [
@@ -83,6 +83,10 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
+
+  // Bỏ qua các yêu cầu đến domain bên ngoài khác
+  // Tránh các vấn đề về CORS hoặc Media khi đi qua Service Worker
+  if (url.origin !== self.location.origin) return;
 
   // File local: Network First → Cache Fallback
   event.respondWith(

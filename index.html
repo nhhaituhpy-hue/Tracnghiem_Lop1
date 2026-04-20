@@ -80,7 +80,6 @@ body {
   gap: 12px; width: 100%; max-width: 400px; margin-bottom: 28px;
 }
 
-.stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 8px; text-align: center; }
 .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 8px; text-align: center; box-shadow: 0 4px 10px rgba(139, 94, 60, 0.05); }
 .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--teal); font-family: 'IBM Plex Mono', monospace; line-height: 1; }
 .stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
@@ -604,20 +603,6 @@ input[type=range]::-webkit-slider-thumb {
         <div class="toggle on" id="shuffleToggle" onclick="toggleShuffle()"></div>
       </div>
     </div>
-    <div class="setting-item">
-      <div class="setting-label">Âm thanh</div>
-      <div class="toggle-wrap" style="margin-top:6px">
-        <span class="toggle-text" id="soundStatusText">Bật</span>
-        <div class="toggle on" id="soundToggle" onclick="toggleSound()"></div>
-      </div>
-    </div>
-    <div class="setting-item">
-      <div class="setting-label">Âm lượng</div>
-      <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-        <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.3" oninput="onVolumeChange(this.value)">
-        <span id="volumeValue" style="font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--muted); min-width: 28px;">30%</span>
-      </div>
-    </div>
   </div>
 
   <!-- Score per question settings -->
@@ -757,66 +742,29 @@ let qtyNum = 50;
 let shuffle = true;
 let pointsPerCorrect = 2;
 let isCustomScore = false;
-let soundEnabled = true;
-let volumeLevel = 0.3;
 let startTime = null;
-
-// Hiệu ứng âm thanh
-const sounds = {
-  // Đổi sang nguồn âm thanh phổ biến, hỗ trợ CORS tốt hơn
-  correct: new Audio('https://www.soundjay.com/buttons/sounds/button-3.mp3'),
-  wrong: new Audio('https://www.soundjay.com/buttons/sounds/button-10.mp3')
-};
-
-// Cấu hình mặc định để tải sẵn
-sounds.correct.preload = 'auto';
-sounds.wrong.preload = 'auto';
-// Tải trước âm thanh
-sounds.correct.load();
-sounds.wrong.load();
 
 // ===== INIT =====
 async function init() {
   await loadQuestions();
   loadBestScore();
-  soundEnabled = localStorage.getItem('quiz_sound_enabled') !== 'false';
-  updateSoundUI();
-  volumeLevel = parseFloat(localStorage.getItem('quiz_volume_level')) || 0.3;
-  applyVolume();
-  showScreen('homeScreen');
   document.getElementById('loadingOverlay').style.display = 'none';
   checkInstallPrompt();
 }
 
 async function loadQuestions() {
   try {
-    // Thử fetch từ mạng trước, nếu không được thì dùng cache (offline)
-    const url = new URL('./questions.json', window.location.href);
-    let res;
-    try {
-      res = await fetch(url.href, { cache: 'no-cache' });
-    } catch (networkErr) {
-      // Không có mạng → thử lấy từ cache của Service Worker
-      res = await fetch(url.href, { cache: 'force-cache' });
-    }
-    if (!res || !res.ok) throw new Error('Not found');
+    const res = await fetch('./questions.json', { cache: 'no-cache' }).catch(() => fetch('./questions.json', { cache: 'force-cache' }));
+    if (!res.ok) throw new Error();
     const data = await res.json();
     applyQuestionsData(data);
   } catch(e) {
-    allQuestions = [];
-    renderHome();
     showNoDataWarning();
   }
 }
 
-function normalizeQuestionsData(data) {
-  if (Array.isArray(data)) return data;
-  if (Array.isArray(data?.questions)) return data.questions;
-  return [];
-}
-
 function applyQuestionsData(data) {
-  const questions = normalizeQuestionsData(data);
+  const questions = Array.isArray(data) ? data : (data?.questions || []);
   if (!questions.length) throw new Error('Invalid questions payload');
   allQuestions = questions;
   renderHome();
@@ -883,13 +831,12 @@ function renderHome() {
     chip.onclick = () => selectTopic(topic, chip);
     chips.appendChild(chip);
   });
-  updateQtyMax();
-  updateScorePreview();
+  syncHomeUI();
+  showScreen('homeScreen');
 }
 
 function selectTopic(topic, el) {
-  if (topic === '__all__') {
-    selectedTopics = ['__all__'];
+  if (topic === '__all__') { selectedTopics = ['__all__'];
     document.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
   } else {
@@ -901,8 +848,7 @@ function selectTopic(topic, el) {
       document.querySelector('.topic-chip.all').classList.add('selected');
     }
   }
-  updateQtyMax();
-  updateScorePreview();
+  syncHomeUI();
 }
 
 function getFilteredQuestions() {
@@ -910,51 +856,23 @@ function getFilteredQuestions() {
   return allQuestions.filter(q => selectedTopics.includes(q.topic));
 }
 
-function updateQtyMax() {
-  const max = getFilteredQuestions().length;
-  qtyNum = Math.min(qtyNum || 50, max) || Math.min(50, max);
-  document.getElementById('qtyNum').textContent = qtyNum;
-  document.getElementById('qtyMax').textContent = `/ ${max} câu có sẵn`;
+function changeQty(delta) {
+  qtyNum = Math.max(0, Math.min(getFilteredQuestions().length, qtyNum + delta));
+  syncHomeUI();
 }
 
-function changeQty(delta) {
-  const max = getFilteredQuestions().length;
-  qtyNum = Math.max(0, Math.min(max, qtyNum + delta));
+function syncHomeUI() {
+  const maxAvailable = getFilteredQuestions().length;
+  qtyNum = Math.min(qtyNum, maxAvailable) || Math.min(50, maxAvailable);
   document.getElementById('qtyNum').textContent = qtyNum;
+  document.getElementById('qtyMax').textContent = `/ ${maxAvailable} câu có sẵn`;
+  
   updateScorePreview();
 }
 
 function toggleShuffle() {
   shuffle = !shuffle;
   document.getElementById('shuffleToggle').className = 'toggle' + (shuffle ? ' on' : '');
-}
-
-function toggleSound() {
-  soundEnabled = !soundEnabled;
-  updateSoundUI();
-  localStorage.setItem('quiz_sound_enabled', soundEnabled);
-}
-
-function updateSoundUI() {
-  const btn = document.getElementById('soundToggle');
-  const text = document.getElementById('soundStatusText');
-  if (btn) btn.className = 'toggle' + (soundEnabled ? ' on' : '');
-  if (text) text.textContent = soundEnabled ? 'Bật' : 'Tắt';
-}
-
-function onVolumeChange(val) {
-  volumeLevel = parseFloat(val);
-  applyVolume();
-  localStorage.setItem('quiz_volume_level', volumeLevel);
-}
-
-function applyVolume() {
-  sounds.correct.volume = volumeLevel; // Âm lượng cho câu đúng
-  sounds.wrong.volume = volumeLevel; // Âm lượng cho câu sai (để dễ kiểm tra)
-  const slider = document.getElementById('volumeSlider');
-  const text = document.getElementById('volumeValue');
-  if (slider) slider.value = volumeLevel;
-  if (text) text.textContent = Math.round(volumeLevel * 100) + '%';
 }
 
 // ===== SCORE SETTINGS =====
@@ -988,20 +906,6 @@ function updateScorePreview() {
 
 // ===== QUIZ LOGIC =====
 function startQuiz() {
-  // Mở khóa âm thanh cho iOS/Safari (Unlock Audio)
-  if (soundEnabled) {
-    // Phát thử ở chế độ im lặng để "xin quyền" trình duyệt
-    const unlock = (audio) => {
-      const p = audio.play();
-      if (p !== undefined) {
-        p.then(() => { audio.pause(); audio.currentTime = 0; })
-         .catch(e => console.error("Audio unlock failed:", e));
-      }
-    };
-    unlock(sounds.correct);
-    unlock(sounds.wrong);
-  }
-
   let pool = getFilteredQuestions();
   if (pool.length === 0) { alert('Không có câu hỏi nào!'); return; }
   if (shuffle) pool = pool.sort(() => Math.random() - 0.5);
@@ -1099,16 +1003,8 @@ function selectAnswer(label) {
   if (label === q.correct) { 
     correct++; 
     totalPoints += pointsPerCorrect;
-    if (soundEnabled) {
-      sounds.correct.currentTime = 0; // Reset để phát lại ngay
-      sounds.correct.play().catch(() => {}); // Chống lỗi nếu trình duyệt chặn
-    }
   } else { 
     wrong++; 
-    if (soundEnabled) {
-      sounds.wrong.currentTime = 0;
-      sounds.wrong.play().catch(() => {});
-    }
   }
 
   renderQuestion();
@@ -1134,41 +1030,28 @@ function showResults() {
   const pct = maxScore > 0 ? Math.round(totalPoints / maxScore * 100) : 0;
   const elapsed = Math.round((Date.now() - startTime) / 1000);
 
-  let icon, title, grade, gradeColor;
-  if (pct >= 90) { icon='🏆'; title='Xuất sắc! Giỏi lắm!'; grade='Xuất sắc ≥ 90%'; gradeColor='var(--green)'; }
-  else if (pct >= 75) { icon='🌟'; title='Làm tốt lắm!'; grade='Khá ≥ 75%'; gradeColor='var(--teal)'; }
-  else if (pct >= 50) { icon='📚'; title='Cố gắng lên nhé!'; grade='Trung bình ≥ 50%'; gradeColor='var(--yellow)'; }
-  else { icon='💪'; title='Ôn bài thêm nha bạn ơi!'; grade='Chưa đạt < 50%'; gradeColor='var(--red)'; }
+  const config = [
+    { min: 90, icon: '🏆', title: 'Xuất sắc! Giỏi lắm!', grade: 'Xuất sắc ≥ 90%', color: 'var(--green)', bg: 'rgba(46, 204, 113, 0.15)' },
+    { min: 75, icon: '🌟', title: 'Làm tốt lắm!', grade: 'Khá ≥ 75%', color: 'var(--teal)', bg: 'rgba(0, 180, 216, 0.15)' },
+    { min: 50, icon: '📚', title: 'Cố gắng lên nhé!', grade: 'Trung bình ≥ 50%', color: 'var(--yellow)', bg: 'rgba(243, 156, 18, 0.15)' },
+    { min: 0,  icon: '💪', title: 'Ôn bài thêm nha!', grade: 'Chưa đạt < 50%', color: 'var(--red)', bg: 'rgba(231, 76, 60, 0.15)' }
+  ];
+  const res = config.find(c => pct >= c.min);
 
-  document.getElementById('resultIcon').textContent = icon;
-  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultIcon').textContent = res.icon;
+  document.getElementById('resultTitle').textContent = res.title;
   document.getElementById('scorePts').textContent = totalPoints;
   document.getElementById('scoreMax').textContent = `/${maxScore}`;
   document.getElementById('scorePct').textContent = pct + '%';
-  document.getElementById('detailCorrect').textContent = correct;
+  document.getElementById('detailCorrect').textContent = correct; 
   document.getElementById('detailWrong').textContent = wrong;
-  document.getElementById('detailPtsPerQ').textContent = pointsPerCorrect + 'đ';
+  document.getElementById('detailPtsPerQ').textContent = pointsPerCorrect + 'đ'; 
   document.getElementById('detailTime').textContent = elapsed < 60 ? elapsed + 's' : Math.floor(elapsed/60) + 'm' + (elapsed%60) + 's';
 
   const grade_el = document.getElementById('resultGrade');
-  grade_el.textContent = grade;
-  const translucentColors = {
-    'var(--green)': 'rgba(46, 204, 113, 0.15)',
-    'var(--teal)': 'rgba(0, 180, 216, 0.15)',
-    'var(--yellow)': 'rgba(243, 156, 18, 0.15)',
-    'var(--red)': 'rgba(231, 76, 60, 0.15)'
-  };
-  grade_el.style.background = translucentColors[gradeColor] || 'transparent';
-  grade_el.style.color = gradeColor;
+  grade_el.textContent = res.grade; grade_el.style.color = res.color; grade_el.style.background = res.bg;
+  setTimeout(() => { document.getElementById('scoreBarFill').style.width = pct + '%'; }, 300);
 
-  // Animate score bar after slight delay
-  setTimeout(() => {
-    document.getElementById('scoreBarFill').style.width = pct + '%';
-    const barColor = pct >= 75 ? 'linear-gradient(90deg, #A67B5B, #8B5E3C)' : pct >= 50 ? 'linear-gradient(90deg,#E67E22,#F39C12)' : 'linear-gradient(90deg,#C0392B,#E74C3C)';
-    document.getElementById('scoreBarFill').style.background = barColor;
-  }, 300);
-
-  // Topic breakdown
   const topicMap = {};
   currentQuestions.forEach((q, i) => {
     if (!topicMap[q.topic]) topicMap[q.topic] = { correct: 0, total: 0 };
